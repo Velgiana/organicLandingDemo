@@ -1,10 +1,10 @@
-@import 'bourbon'; // http://bourbon.io/
+@import 'bourbon'; /* http://bourbon.io/*/
 
-@import '../partials/variables'; // colors, fonts etc...
+@import '../partials/variables'; /* colors, fonts etc...*/
 
-@import '../partials/mixins'; // custom mixins
+@import '../partials/mixins'; /* custom mixins*/
 
-@import '../partials/layout'; // responsive grid and media queries
+@import '../partials/layout'; /* responsive grid and media queries*/
 
 /* -------------------------------- 
 
@@ -19,7 +19,7 @@ Primary style
 body {
 	font: {
 		size: 100%;
-		family: $primary-font; // variables inside partials > _variables.scss
+		family: $primary-font; /* variables inside partials > _variables.scss*/
 	}
 	color: $color-1;
 	background-color: $color-3;
@@ -30,9 +30,6 @@ a {
 	text-decoration: none;
 }
 
-img {
-	max-width: 100%;
-}
 
 /* -------------------------------- 
 
@@ -50,36 +47,6 @@ Main components
 	padding: 20px 40px 70px;
 	z-index: 1;
 
-	&::after {
-		/* quotation mark */
-		content: '\201C';
-		position: absolute;
-		top: 10px;
-		left: 0;
-		width: 50px;
-		height: 50px;
-		padding-top: 8px;
-		margin-left: -25px;
-		background: rgba(darken($color-1, 10%), .9);
-		font-family: $secondary-font;
-		color: $color-4;
-		@include font-size(70px);
-		text-align: center;
-		/* visible on big devices only */
-		display: none;
-	}
-
-	@include MQ(M) {
-		margin: 4em auto;
-		padding: 64px 50px 114px;
-	}
-
-	@include MQ(L) {
-		&::after {
-			/* quotation mark visible */
-			display: block;
-		}
-	}
 }
 
 .cd-testimonials {
@@ -119,54 +86,6 @@ Main components
 	}
 }
 
-.cd-author {
-
-	img, .cd-author-info {
-		display: inline-block;
-		vertical-align: middle;
-	}
-
-	img {
-		width: 32px;
-		height: 32px;
-		border-radius: 50%;
-		margin-right: 5px;
-		box-shadow: 0 0 6px rgba(#000, .3);
-	}
-
-	.cd-author-info {
-		text-align: left;
-		line-height: 1.2;
-
-		li:first-child {
-			@include font-size(14px);
-		}
-
-		li:last-child {
-			@include font-size(12px);
-			color: lighten($color-1, 20%);
-		}
-	}
-
-	@include MQ(M) {
-		img {
-			width: 50px;
-			height: 50px;
-		}
-
-		.cd-author-info {
-			line-height: 1.4;
-
-			li:first-child {
-				@include font-size(16px);
-			}
-
-			li:last-child {
-				@include font-size(14px);
-			}
-		}
-	}
-}
 
 .flex-direction-nav li {
 	position: absolute;
@@ -273,7 +192,6 @@ Main components
 	visibility: hidden;
 	opacity: 0;
 	-webkit-transition: opacity .3s 0s, visibility 0s .3s;
-	-moz-transition: opacity .3s 0s, visibility 0s .3s;
 	transition: opacity .3s 0s, visibility 0s .3s;
 
 	.cd-testimonials-all-wrapper {
@@ -301,8 +219,10 @@ Main components
 		backface-visibility: hidden;
 
 		-webkit-transition: -webkit-transform .3s, opacity .3s;
-		-moz-transition: -moz-transform .3s, opacity .3s;
+		-webkit-transition: opacity .3s, -webkit-transform .3s;
+		transition: opacity .3s, -webkit-transform .3s;
 		transition: transform .3s, opacity .3s;
+		transition: transform .3s, opacity .3s, -webkit-transform .3s;
 	}
 
 	p {
@@ -341,7 +261,6 @@ Main components
 		visibility: visible;
 		opacity: 1;
 		-webkit-transition: opacity .3s 0s, visibility 0s 0s;
-		-moz-transition: opacity .3s 0s, visibility 0s 0s;
 		transition: opacity .3s 0s, visibility 0s 0s;
 
 		.cd-testimonials-all-wrapper { 
@@ -349,7 +268,7 @@ Main components
 		}
 
 		.cd-testimonials-item {
-			// @include animation(cd-slide-in .3s);
+			/* @include animation(cd-slide-in .3s);*/
 			opacity: 1;
 			@include transform(translate3d(0, 0, 0) scale(1));
 		}
